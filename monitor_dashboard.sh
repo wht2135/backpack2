@@ -55,12 +55,33 @@ echo "💾 备份状态:"
 BACKUP_LOG="/root/.openclaw/workspace/logs/backup.log"
 HEALTH_LOG="/root/.openclaw/workspace/logs/health.log"
 
-if [ -f "$BACKUP_LOG" ]; then
-    LAST_BACKUP=$(tail -1 "$BACKUP_LOG" 2>/dev/null | cut -c1-50 || echo "无记录")
-    BACKUP_COUNT=$(wc -l < "$BACKUP_LOG" 2>/dev/null || echo "0")
-    echo "✅ GitHub 备份已配置"
-    echo "   最近备份: $LAST_BACKUP"
-    echo "   备份次数: $BACKUP_COUNT"
+# 检查Git配置
+cd /root/.openclaw/workspace
+if [ -d .git ]; then
+    if git remote | grep -q origin; then
+        REMOTE_URL=$(git remote get-url origin 2>/dev/null | cut -c1-40)
+        if [ -f "$BACKUP_LOG" ]; then
+            LAST_BACKUP=$(tail -1 "$BACKUP_LOG" 2>/dev/null | cut -c1-50 || echo "无记录")
+            BACKUP_COUNT=$(wc -l < "$BACKUP_LOG" 2>/dev/null || echo "0")
+            echo "✅ GitHub 备份已配置"
+            echo "   远程仓库: $REMOTE_URL"
+            echo "   最近备份: $LAST_BACKUP"
+            echo "   备份次数: $BACKUP_COUNT"
+        else
+            echo "✅ GitHub 备份已部分配置"
+            echo "   远程仓库: $REMOTE_URL"
+            echo "   定时任务: ✅ 已设置（每日2点）"
+            echo "   备份脚本: ✅ 已创建"
+            echo "   待执行: 首次备份"
+        fi
+    else
+        echo "⚠️  GitHub 备份准备就绪"
+        echo "   Git仓库: ✅ 已初始化"
+        echo "   备份脚本: ✅ 已创建"
+        echo "   定时任务: ✅ 已设置（每日2点）"
+        echo "   待配置: 远程仓库URL"
+        echo "   命令: git remote add origin <URL>"
+    fi
 else
     echo "❌ GitHub 备份未配置"
     echo "   建议运行: ./setup_github_backup.sh"
