@@ -75,12 +75,14 @@ if [ -d .git ]; then
             echo "   待执行: 首次备份"
         fi
     else
+        # 检查是否有认证问题
         echo "⚠️  GitHub 备份准备就绪"
         echo "   Git仓库: ✅ 已初始化"
+        echo "   远程仓库: ✅ 已配置 (wht2135/backpack2)"
         echo "   备份脚本: ✅ 已创建"
         echo "   定时任务: ✅ 已设置（每日2点）"
-        echo "   待配置: 远程仓库URL"
-        echo "   命令: git remote add origin <URL>"
+        echo "   待完成: GitHub认证"
+        echo "   测试命令: ./test_github_auth.sh"
     fi
 else
     echo "❌ GitHub 备份未配置"

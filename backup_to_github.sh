@@ -20,6 +20,10 @@ if ! git remote | grep -q origin; then
     exit 1
 fi
 
+# 获取远程仓库URL
+REMOTE_URL=$(git remote get-url origin 2>/dev/null || echo "")
+echo "📦 远程仓库: $REMOTE_URL"
+
 # 拉取最新更改（避免冲突）
 echo "📥 拉取最新更改..."
 git fetch origin
