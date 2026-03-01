@@ -1,0 +1,31 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090
+
+proxies:
+  - name: "v2ray-wss"
+    type: vmess
+    server: vp.itundao.com
+    port: 443
+    uuid: 920918b2-f6ce-4994-bc6b-ef32428f6e0b
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: false
+    servername: vp.itundao.com
+    network: ws
+    ws-opts:
+      path: /73ea86
+      headers:
+        Host: vp.itundao.com
+
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - "v2ray-wss"
+
+rules:
+  - MATCH,PROXY

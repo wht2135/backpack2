@@ -1,0 +1,15 @@
+{
+  "restore_time": "2026-02-28T17:36:25.440777",
+  "restore_dir": "/root/.openclaw/workspace/restore_20260228_173621",
+  "source_repo": "wht2135/openclaw-backup",
+  "stats": {
+    "config_files": 6,
+    "digest_files": 2,
+    "total_restored": 8
+  },
+  "system_info": {
+    "workspace": "/root/.openclaw/workspace",
+    "username": "wht2135",
+    "repo": "openclaw-backup"
+  }
+}

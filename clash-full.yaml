@@ -1,0 +1,416 @@
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: rule
+log-level: silent
+external-controller: 127.0.0.1:9090
+secret: ""
+dns:
+  enable: true
+  ipv6: false
+  nameserver:
+    - 223.5.5.5
+    - 180.76.76.76
+    - 119.29.29.29
+    - 117.50.11.11
+    - 117.50.10.10
+    - 114.114.114.114
+    - https://dns.alidns.com/dns-query
+    - https://doh.360.cn/dns-query
+  fallback:
+    - 8.8.8.8
+    - tls://dns.rubyfish.cn:853
+    - tls://1.0.0.1:853
+    - tls://dns.google:853
+    - https://dns.rubyfish.cn/dns-query
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+      - 127.0.0.1/32
+    domain:
+      - +.google.com
+      - +.facebook.com
+      - +.youtube.com
+      - +.xn--ngstr-lra8j.com
+      - +.google.cn
+      - +.googleapis.cn
+      - +.gvt1.com
+proxies:
+  # 你的v2ray-wss节点（新增）
+  - name: "v2ray-wss"
+    type: vmess
+    server: vp.itundao.com
+    port: 443
+    uuid: 920918b2-f6ce-4994-bc6b-ef32428f6e0b
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: false
+    servername: vp.itundao.com
+    network: ws
+    ws-opts:
+      path: /73ea86
+      headers:
+        Host: vp.itundao.com
+  
+  # 原有trojan节点（保持原样）
+  - name: 有效期2027/12/21,剩余:97.76GB
+    type: trojan
+    server: iplc-hk-1.tr202502.com
+    port: 7001
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-IPLC-HK-1-流量倍率:1.0
+    type: trojan
+    server: iplc-hk-1.tr202502.com
+    port: 7001
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-IPLC-HK-2-流量倍率:1.0
+    type: trojan
+    server: iplc-hk-2.tr202502.com
+    port: 8001
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-IPLC-HK-3-流量倍率:1.0
+    type: trojan
+    server: iplc-hk-3.tr202502.com
+    port: 7002
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-IPLC-HK-4-流量倍率:1.0
+    type: trojan
+    server: iplc-hk-4.tr202502.com
+    port: 8002
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-IPLC-HK-5-流量倍率:1.0
+    type: trojan
+    server: iplc-hk-5.tr202502.com
+    port: 7003
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-IPLC-HK-6-流量倍率:1.0
+    type: trojan
+    server: iplc-hk-6.tr202502.com
+    port: 8003
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本-FW-JP1-流量倍率:1.0
+    type: trojan
+    server: fw-jp1.tr202502.com
+    port: 5011
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本-FW-JP2-流量倍率:1.0
+    type: trojan
+    server: fw-jp2.tr202502.com
+    port: 5012
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本-FW-JP3-流量倍率:1.0
+    type: trojan
+    server: fw-jp3.tr202502.com
+    port: 5013
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 美国-FW-US1-流量倍率:1.0
+    type: trojan
+    server: fw-us1.tr202502.com
+    port: 5022
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 美国-FW-US2-流量倍率:1.0
+    type: trojan
+    server: fw-us2.tr202502.com
+    port: 5022
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 美国-FW-US3-流量倍率:1.0
+    type: trojan
+    server: fw-us3.tr202502.com
+    port: 5022
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 澳大利亚-FW-AU1-流量倍率:1.0
+    type: trojan
+    server: fw-au1.tr202502.com
+    port: 5042
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 澳大利亚-FW-AU2-流量倍率:1.0
+    type: trojan
+    server: fw-au2.tr202502.com
+    port: 5043
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 英国-FW-UK1-流量倍率:1.0
+    type: trojan
+    server: fw-uk1.tr202502.com
+    port: 5031
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 爱沙尼亚-EE-1-流量倍率:0.1
+    type: trojan
+    server: ee-1.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 澳大利亚-AU-1-流量倍率:0.5
+    type: trojan
+    server: au-1.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 澳大利亚-AU-2-流量倍率:1.0
+    type: trojan
+    server: au-2.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 澳大利亚-AU-3-流量倍率:1.0
+    type: trojan
+    server: au-3.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 澳大利亚-AU-4-流量倍率:1.0
+    type: trojan
+    server: au-4.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 德国-DE-2-流量倍率:1.0
+    type: trojan
+    server: de-2.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 德国-DE-3-流量倍率:1.0
+    type: trojan
+    server: de-3.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 美国-US-1-流量倍率:1.5
+    type: trojan
+    server: us-1.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 美国-US-2-流量倍率:1.0
+    type: trojan
+    server: us-2.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 美国-US-3-流量倍率:1.0
+    type: trojan
+    server: us-3.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-HK-1-流量倍率:1.0
+    type: trojan
+    server: hk-1.tr202502.com
+    port: 465
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 中国香港-HK-2-流量倍率:1.0
+    type: trojan
+    server: hk-2.tr202502.com
+    port: 465
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 新加坡-SG-1-流量倍率:1.0
+    type: trojan
+    server: sg-1.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 新加坡-SG-2-流量倍率:1.0
+    type: trojan
+    server: sg-2.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本东京-TY-1-流量倍率:1.0
+    type: trojan
+    server: ty-1.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本东京-TY-2-流量倍率:1.0
+    type: trojan
+    server: ty-2.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本东京-TY-3-流量倍率:1.0
+    type: trojan
+    server: ty-3.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本东京-TY-4-流量倍率:1.0
+    type: trojan
+    server: ty-4.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本大阪-OS-1-流量倍率:1.0
+    type: trojan
+    server: os-1.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本大阪-OS-2-流量倍率:1.0
+    type: trojan
+    server: os-2.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 日本大阪-OS-3-流量倍率:1.0
+    type: trojan
+    server: os-3.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 荷兰-NL-1-流量倍率:1.0
+    type: trojan
+    server: nl-1.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 荷兰-NL-2-流量倍率:1.0
+    type: trojan
+    server: nl-2.tr202502.com
+    port: 443
+    password: 1bb8ORt9PPHy4qWYdC
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: 荷兰-NL-3-流量倍率:1.0
+    type: trojan
+    server: nl-3.tr202502.com
+    port: 443
+    password: 1bb8ORt9PP
